@@ -1,0 +1,135 @@
+﻿@model List<DebenturesMercadoSecundarioModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+    <h2 class="display-4">Debentures</h2>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <table>
+            <tr>
+                <td>Ano : </td>
+                <td>
+                    <select id="Ano" name="Ano">
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option selected="selected" value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </td>
+                <td>Mês : </td>
+                <td>
+                    <select id="mes" name="mes">
+                        <option selected="selected" value="JAN">Janeiro</option>
+                        <option value="FEV">Fevereiro</option>
+                        <option value="MAR">Março</option>
+                        <option value="ABR">Abril</option>
+                        <option value="MAI">Maio</option>
+                        <option value="JUN">Junho</option>
+                        <option value="JUL">Julho</option>
+                        <option value="AGO">Agosto</option>
+                        <option value="SET">Setembro</option>
+                        <option value="OUT">Outubro</option>
+                        <option value="NOV">Novembro</option>
+                        <option value="DEZ">Dezembro</option>
+                    </select>
+                </td>
+                <td>Dia : </td>
+                <td>
+                    <select id="dia" name="dia">
+                        <option selected="selected" value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                </td>
+                <td><input type="hidden" name="data" value="@DateTime.Now.ToString("yyyy-MM-dd")" /></td>
+                <td><input type="submit" value="Submeter" /></td>
+            </tr>
+        </table>
+        <hr />
+    </form>
+    @if (Model != null && Model.Count > 0)
+    {
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Grupo</th>
+                    <th>Código do Ativo</th>
+                    <th>Data de Referência</th>
+                    <th>Data de Vencimento</th>
+                    <th>Percentual Taxa</th>
+                    <th>Taxa Compra</th>
+                    <th>Taxa Venda</th>
+                    <th>Taxa Indicativa</th>
+                    <th>Desvio Padrão</th>
+                    <th>Valor Mínimo do Intervalo</th>
+                    <th>Valor Máximo do Intervalo</th>
+                    <th>PU</th>
+                    <th>Percentual PU par</th>
+                    <th>Duration</th>
+                    <th>Percentual Reune</th>
+                    <th>Emissor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Grupo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Codigo_ativo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Data_referencia)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Data_vencimento)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Percentual_taxa)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Taxa_compra)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Taxa_venda)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Taxa_indicativa)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Desvio_padrao)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Val_min_intervalo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Val_max_intervalo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Pu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Percent_pu_par)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Duration)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Percent_reune)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Emissor)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
